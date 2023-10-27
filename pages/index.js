@@ -58,7 +58,7 @@ export default function Home() {
             <span style={{color:'navy'}}>INDIA </span>
             <span style={{color:'green'}}>GATE </span>
           </h1>
-          <p>"India Gate is a symbol of unity and diversity, reminding us that we are one nation, one people, and one family."</p>
+          <p>&quot;India Gate is a symbol of unity and diversity, reminding us that we are one nation, one people, and one family.&quot;</p>
         </div>
         <div ref={container} className={styles.gallery}>
           <Column images={images.slice(0, 3)} y={y} />
