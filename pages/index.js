@@ -69,10 +69,13 @@ export default function Home() {
           <p>&quot;India Gate is a symbol of unity and diversity, reminding us that we are one nation, one people, and one family.&quot;</p>
         </div>
         <div ref={gallery} className={styles.gallery}>
-          <Column images={images.slice(0, 3)} y={y} />
-          <Column images={images.slice(3, 6)} y={y2} />
+          <div className={styles.row}><Column images={images.slice(0, 3)} y={y} />
+          <Column images={images.slice(3, 6)} y={y2} /></div>
+          <div  className={styles.row}>
           <Column images={images.slice(6, 9)} y={y3} />
           <Column images={images.slice(9, 12)} y={y4} />
+          </div>
+         
         </div>
         <div className={styles.spacer}>
           <h1>END</h1>
