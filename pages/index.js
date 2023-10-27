@@ -4,7 +4,7 @@ import styles from "../styles/pages.module.scss";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef, useEffect , useState} from "react";
 import Lenis from "@studio-freight/lenis";
-import useDeminsion from "./useDeminsion";
+
 import Link from "next/link";
 
 const images = [
