@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styles from "../styles/pages.module.scss";
 import { useScroll, useTransform, motion } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect , useState} from "react";
 import Lenis from "@studio-freight/lenis";
 import useDeminsion from "./useDeminsion";
 import Link from "next/link";
@@ -23,31 +23,39 @@ const images = [
 ];
 
 export default function Home() {
-  const container = useRef(null);
-  const { height } = useDeminsion();
+  const gallery = useRef(null);
+  const [dimension, setDimension] = useState({width:0, height:0});
+
   const { scrollYProgress } = useScroll({
-    target: container,
+    target: gallery,
+    offset: ['start end', 'end start']
+  })
+  const { height } = dimension;
+  const y = useTransform(scrollYProgress, [0, 1], [0, height * 2])
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3])
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25])
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3])
 
-    // When will Start Scrolling and When will Stop [conatiner , screen]
-    offset: ["start end", " end start"],
-  });
-
-  useEffect(() => {
-    const lenis = new Lenis();
+  useEffect( () => {
+    const lenis = new Lenis()
 
     const raf = (time) => {
-      lenis.raf(time);
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
 
-      requestAnimationFrame(raf);
-    };
+    const resize = () => {
+      setDimension({width: window.innerWidth, height: window.innerHeight})
+    }
 
+    window.addEventListener("resize", resize)
     requestAnimationFrame(raf);
-  }, []);
+    resize();
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, height * 2]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
-  const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3]);
+    return () => {
+      window.removeEventListener("resize", resize);
+    }
+  }, [])
 
   return (
     <>
@@ -60,7 +68,7 @@ export default function Home() {
           </h1>
           <p>&quot;India Gate is a symbol of unity and diversity, reminding us that we are one nation, one people, and one family.&quot;</p>
         </div>
-        <div ref={container} className={styles.gallery}>
+        <div ref={gallery} className={styles.gallery}>
           <Column images={images.slice(0, 3)} y={y} />
           <Column images={images.slice(3, 6)} y={y2} />
           <Column images={images.slice(6, 9)} y={y3} />
