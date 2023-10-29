@@ -86,6 +86,17 @@
         }
         
     }
+    h2{
+        
+        font-size:3rem ;
+        font-family: "Agbalumo";
+        font-weight: 400;
+
+        @media(max-width:768px){
+            font-size:2rem ;
+        }
+        
+    }
     p{  width: 80%;
        position: absolute;
        top: 56%;

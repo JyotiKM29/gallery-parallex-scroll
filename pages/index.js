@@ -62,11 +62,9 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.spacer}>
           <h1>
-            <span style={{color:'orange'}}>THE </span>
-            <span style={{color:'navy'}}>INDIA </span>
-            <span style={{color:'green'}}>GATE </span>
+           🍔 Food lover 🍜
           </h1>
-          <p>&quot;India Gate is a symbol of unity and diversity, reminding us that we are one nation, one people, and one family.&quot;</p>
+          <p>&quot;There is no sincerer love than the love of food.&quot;</p>
         </div>
         <div ref={gallery} className={styles.gallery}>
           <div className={styles.row}><Column images={images.slice(0, 3)} y={y} />
@@ -78,7 +76,7 @@ export default function Home() {
          
         </div>
         <div className={styles.spacer}>
-          <h1>END</h1>
+          <h2> 🌮 Delicious passion 🍲</h2>
           <p>👩🏻‍💻 <Link href='https://jyoti-km.vercel.app/'> Jyoti Km</Link></p>
         </div>
       </main>
